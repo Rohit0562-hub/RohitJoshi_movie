@@ -136,4 +136,5 @@ function deleteMovie(movieId) {
     	if (!response.ok) throw new Error('Failed to delete movie');
     	fetchMovies(); //Refresh the list
     })
+    .catch(error => console.error('Error deleteing movie:', error));
 }
