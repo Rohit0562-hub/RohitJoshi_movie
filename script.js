@@ -18,10 +18,13 @@ function renderMovies (moviesToDisplay) {
 	moviesToDisplay.forEach(movie => {
 		const movieElement = document.createElement('div');
 		movieElement.classList.add('movie-item');
+		const safeTitle = movie.title.replace(/'/g, "\\'");
+        const safeGenre = movie.genre.replace(/'/g, "\\'");
+        
 		movieElement.innerHTML = `
 			<p><strong>${movie.title}</strong> (${movie.year}) - ${movie.genre}</p>
-			<button onclick="editMoviePrompt(${movie.id}, '${movie.title}', ${movie.year},'${movie.genre}')">Edit</button>
-			<button onclick="deleteMovie(${movie.id})">Delete</button>
+			<button onclick="editMoviePrompt('${movie.id}', '${safeTitle}', ${movie.year}, '${safeGenre}')">Edit</button>
+            <button onclick="deleteMovie('${movie.id}')">Delete</button>
 		`;
 		movieListDiv.appendChild(movieElement);
 
@@ -60,13 +63,15 @@ renderMovies(filteredMovies); //Displays the filtered result
 
 //Create Operation (POST Method)
 
+
+
 form.addEventListener('submit', function(event) {
 	event.preventDefault();
 
 	const newMovie = {
 		title: document.getElementById('title').value,
 		genre: document.getElementById('genre').value,
-		year: document.getElementById('year').value,
+		year: Number(document.getElementById('year').value),
 
 	};
 
@@ -129,12 +134,12 @@ function updateMovie(movieId, updatedMovieData) {
 //DELETE Operation (Delete Method)
 
 function deleteMovie(movieId) {
-	fetch(`${API_URl}/${movieId}`, {
-        method: 'DELETE',
+    fetch(`${API_URl}/${movieId}`, {
+        method: 'DELETE'
     })
-    .then (response => {
-    	if (!response.ok) throw new Error('Failed to delete movie');
-    	fetchMovies(); //Refresh the list
+    .then(response => {
+        if (!response.ok) throw new Error('Failed to delete movie');
+        fetchMovies();
     })
-    .catch(error => console.error('Error deleteing movie:', error));
+    .catch(error => console.error('Error deleting movie:', error));
 }

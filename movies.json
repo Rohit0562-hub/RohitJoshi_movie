@@ -1,6 +1,12 @@
 {
   "movies": [
     {
+      "id": "1",
+      "title": "Inception",
+      "genre": "Sci-fi",
+      "year": 2010
+    },
+    {
       "id": "2",
       "title": "Pulp Fiction",
       "genre": "Crime",
@@ -13,16 +19,34 @@
       "year": 2021
     },
     {
-      "id": "0e30",
+      "id": "4",
       "title": "Interstellar",
       "genre": "Sci-fi",
       "year": "2014"
     },
     {
-      "id": "54d4",
+      "id": "6",
+      "title": "The Dark Knight",
+      "genre": "Action",
+      "year": 2008
+    },
+    {
+      "id": "7",
       "title": "The Matrix",
       "genre": "Action",
-      "year": "1999"
+      "year": 1999
+    },
+    {
+      "id": "8",
+      "title": "Oppenheimer",
+      "genre": "Thriller",
+      "year": 2023
+    },
+    {
+      "id": "9",
+      "title": "SpiderMan",
+      "genre": "Action",
+      "year": 2002
     }
   ]
 }
